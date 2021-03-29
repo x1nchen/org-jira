@@ -1733,7 +1733,7 @@ that should be bound to an issue."
       (error "Must provide all information!"))
   (let* ((project-components (jiralib-get-components project))
          (jira-users (org-jira-get-assignable-users project))
-         (user (completing-read "Assignee: " (mapcar 'car jira-users)))
+         ;; (user (completing-read "Assignee: " (mapcar 'car jira-users)))
          (priority (car (rassoc (org-jira-read-priority) (jiralib-get-priorities))))
          (ticket-struct
           `((fields
@@ -1748,7 +1748,8 @@ that should be bound to an issue."
                                    "")))
              (description . ,description)
              (priority (id . ,priority))
-             (assignee (accountId . ,(or (cdr (assoc user jira-users)) user)))))))
+             ;; (assignee (accountId . ,(or (cdr (assoc user jira-users)) user)))
+             ))))
     ticket-struct))
 
 ;;;###autoload
